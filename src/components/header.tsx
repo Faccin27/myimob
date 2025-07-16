@@ -15,14 +15,14 @@ export function Header({ activeSection = "home" }: HeaderProps) {
   ];
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 lg:px-12">
-      <div className="flex items-center gap-3">
+    <header className="flex items-center justify-between px-6 py-4 lg:px-36">
+      <div className="flex items-center gap-2">
         <Image
           src="/images/logo.png"
           alt="Urbane Logo"
           width={40}
           height={40}
-          className="w-10 h-10"
+          className="w-12 h-12"
         />
         <span className="text-xl font-semibold text-[#ffffff]">Myimob</span>
       </div>
