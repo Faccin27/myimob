@@ -28,7 +28,7 @@ export function AboutSection() {
             preserveAspectRatio="xMidYMid meet"
           >
             <path
-              d="M400 50 C200 150, 600 200, 400 300 C600 400, 200 450, 400 550"
+              d="M400 40 C200 150, 600 200, 400 300 C600 400, 200 450, 400 550"
               stroke="white"
               strokeWidth="2"
               fill="none"
@@ -38,9 +38,9 @@ export function AboutSection() {
 
           <div className="space-y-32">
             {/* Step 1 */}
-            <div className="relative flex items-center">
+            <div className="relative flex flex-col lg:flex-row items-center bg-[#181818] lg:bg-transparent">
               {/* Left Side - Number and Sparkles */}
-              <div className="w-1/2 flex justify-end pr-16">
+              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end lg:pr-16">
                 <div className="relative">
                   {/* Sparkles */}
                   <div className="absolute -top-4 -left-8">
@@ -65,12 +65,10 @@ export function AboutSection() {
                   </div>
                 </div>
               </div>
-
-              {/* Center Circle */}
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10"></div>
-
+              {/* Center Circle - Oculto em mobile */}
+              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10 hidden lg:block"></div>
               {/* Right Side - Content */}
-              <div className="w-1/2 pl-16 text-left">
+              <div className="w-full lg:w-1/2 lg:pl-16 text-center lg:text-left mt-8 lg:mt-0">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Descubra uma Propriedade
                 </h3>
@@ -84,10 +82,10 @@ export function AboutSection() {
             </div>
 
             {/* Step 2 */}
-            <div className="relative flex items-center">
-              {/* Left Side - Content */}
-              <div className="w-1/2 flex justify-end pr-16 text-right">
-                <div>
+            <div className="relative flex flex-col lg:flex-row items-center bg-[#181818] lg:bg-transparent">
+              {/* Left Side - Content (em desktop) */}
+              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end lg:pr-16 order-2 lg:order-1">
+                <div className="text-center lg:text-right mt-8 lg:mt-0">
                   <h3 className="text-2xl font-bold text-white mb-4">
                     Agende uma Visita
                   </h3>
@@ -100,12 +98,10 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-
-              {/* Center Circle */}
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10"></div>
-
-              {/* Right Side - Number and Sparkles */}
-              <div className="w-1/2 pl-16 flex justify-start">
+              {/* Center Circle - Oculto em mobile */}
+              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10 hidden lg:block"></div>
+              {/* Right Side - Number and Sparkles (em desktop) */}
+              <div className="w-full lg:w-1/2 flex justify-center lg:justify-start lg:pl-16 order-1 lg:order-2">
                 <div className="relative">
                   {/* Sparkles */}
                   <div className="absolute -top-4 -right-8">
@@ -132,10 +128,10 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="relative flex items-center">
+            {/* Step 3 - Responsividade Especial */}
+            <div className="relative flex flex-col lg:flex-row items-center bg-[#181818] lg:bg-transparent">
               {/* Left Side - Number and Sparkles */}
-              <div className="w-1/2 flex justify-end pr-16">
+              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end lg:mr-24 lg:pr-16">
                 <div className="relative">
                   {/* Sparkles */}
                   <div className="absolute -top-4 -left-8">
@@ -154,7 +150,6 @@ export function AboutSection() {
                       />
                     </svg>
                   </div>
-                  <div className="absolute top-16 -right-8"></div>
                   {/* Number */}
                   <div className="text-8xl font-bold bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">
                     3.
@@ -162,11 +157,11 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* Center Circle */}
-              <div className="absolute left-1/2 top-2/5 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10"></div>
+              {/* Center Circle - Oculto em mobile */}
+              <div className="absolute left-1/2 top-2/5 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10 hidden lg:block"></div>
 
               {/* Right Side - Content */}
-              <div className="w-1/2 pl-16 text-left">
+              <div className="w-full lg:w-1/2 lg:pl-16 text-center lg:text-left mt-8 lg:mt-0">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   Finalize sua Reserva
                 </h3>
@@ -181,6 +176,7 @@ export function AboutSection() {
           </div>
         </div>
 
+        {/* Stats Section */}
         <div className="px-6 lg:px-12 py-16 pt-32">
           <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8 text-center">
             {[
