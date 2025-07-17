@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/about";
+import { PropertyCards } from "@/components/cards";
 import { Header } from "@/components/header";
 import HeroSection from "@/components/hero";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <AboutSection />
+      <PropertyCards />
     </div>
   );
 }

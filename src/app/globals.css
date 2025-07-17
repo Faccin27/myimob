@@ -120,3 +120,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #3655d4 #2a2a2a;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #3655d4;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #4a6ae0;
+}
+
+/* Para forçar o scroll horizontal funcionar */
+.scroll-container {
+  width: 100%;
+  min-width: 0;
+}
+
+.scroll-content {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  width: max-content;
+  min-width: 100%;
+}
