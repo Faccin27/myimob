@@ -1,6 +1,7 @@
 import { AboutSection } from "@/components/about"
 import { PropertyCards } from "@/components/cards"
 import { FloatingSearch } from "@/components/floating-search"
+import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import HeroSection from "@/components/hero"
 import { ServicesSection } from "@/components/services"
@@ -16,6 +17,7 @@ export default function Home() {
       <PropertyCards />
       <ServicesSection />
       <TestimonialsSection />
+      <Footer />
       <FloatingSearch />
     </div>
   )
