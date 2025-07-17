@@ -4,6 +4,7 @@ import { FloatingSearch } from "@/components/floating-search"
 import { Header } from "@/components/header"
 import HeroSection from "@/components/hero"
 import { ServicesSection } from "@/components/services"
+import {TestimonialsSection} from '@/components/testimonials'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AboutSection />
       <PropertyCards />
       <ServicesSection />
+      <TestimonialsSection />
       <FloatingSearch />
     </div>
   )

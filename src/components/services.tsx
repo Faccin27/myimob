@@ -283,10 +283,10 @@ export function ServicesSection() {
           )}
         >
           <div className="max-w-4xl">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Como transformamos seu{" "}
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight text-nowrap">
+              Juntos fazemos o seu{" "}
               <span className="bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">
-                sonho em realidade
+                sonho acontecer
               </span>
             </h2>
             <p className="text-[#a0a0a0] text-lg lg:text-xl font-light max-w-2xl">
