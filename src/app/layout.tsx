@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Bai_Jamjuree } from 'next/font/google'
+import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 
 const baiJamjuree = Bai_Jamjuree({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-bai',
-  display: 'swap',
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-bai",
+  display: "swap",
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,11 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${baiJamjuree.className} `}
-      >
-        {children}
-      </body>
+      <body className={`${baiJamjuree.className} `}>{children}</body>
     </html>
   );
 }

@@ -42,11 +42,12 @@ export default function HeroSection() {
       {/* hero image */}
       <div className="mb-16">
         <div className="rounded-[45px] overflow-hidden">
-          <Image src="/images/hero.png"
-          alt="urban cityscape skyscrapper at dusk // hero impact image"
-          width={1200}
-          height={600}
-          className="w-full h-[80dvh] object-cover"
+          <Image
+            src="/images/hero.png"
+            alt="urban cityscape skyscrapper at dusk // hero impact image"
+            width={1200}
+            height={600}
+            className="w-full h-[80dvh] object-cover"
           ></Image>
         </div>
       </div>

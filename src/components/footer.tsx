@@ -1,5 +1,13 @@
-import Link from "next/link"
-import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin } from "lucide-react"
+import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+  Facebook,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
 
 export function Footer() {
   const navLinks = [
@@ -9,21 +17,27 @@ export function Footer() {
     { href: "#services", label: "Serviços" },
     { href: "#testimonials", label: "Depoimentos" },
     { href: "#contact", label: "Contato" },
-  ]
+  ];
 
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/gui.faccin", label: "Instagram" },
+    {
+      icon: Instagram,
+      href: "https://instagram.com/gui.faccin",
+      label: "Instagram",
+    },
     { icon: Facebook, href: "https://faccindev.pro", label: "Facebook" },
     { icon: Twitter, href: "https://faccindev.pro", label: "Twitter" },
     { icon: Linkedin, href: "https://faccindev.pro", label: "LinkedIn" },
-  ]
+  ];
 
   return (
     <footer className="text-white relative overflow-hidden">
       <div className="px-6 lg:px-36 py-16 border-b border-white/10">
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white mb-6">Entre em Contato</h3>
+            <h3 className="text-xl font-bold text-white mb-6">
+              Entre em Contato
+            </h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-[#a0a0a0] hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-[#3655d4]" />
@@ -41,7 +55,9 @@ export function Footer() {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white mb-6 lg:ml-28">Navegação</h3>
+            <h3 className="text-xl font-bold text-white mb-6 lg:ml-28">
+              Navegação
+            </h3>
             <nav className="grid grid-cols-2 gap-3 lg:ml-28">
               {navLinks.map((link) => (
                 <Link
@@ -71,7 +87,8 @@ export function Footer() {
             </div>
             <div className="space-y-3">
               <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                Siga-nos nas redes sociais para ficar por dentro das melhores oportunidades imobiliárias.
+                Siga-nos nas redes sociais para ficar por dentro das melhores
+                oportunidades imobiliárias.
               </p>
             </div>
           </div>
@@ -98,7 +115,9 @@ export function Footer() {
 
       <div className="px-6 lg:px-36 py-6 border-t border-white/10">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-          <div className="text-[#a0a0a0] text-sm">© 2025 Myimob. Todos os direitos reservados.</div>
+          <div className="text-[#a0a0a0] text-sm">
+            © 2025 Myimob. Todos os direitos reservados.
+          </div>
           <div className="text-[#666] ">
             desenvolvido por{" "}
             <Link
@@ -112,5 +131,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
