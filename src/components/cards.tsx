@@ -138,8 +138,8 @@ export function PropertyCards() {
   }, [isDragging, startX, scrollLeft])
 
   return (
-    <section className="py-20 bg-[#181818]">
-      <div className="pl-6 lg:pl-36 mb-12">
+    <section className="py-20 bg-[#181818] px-6 lg:px-36">
+      <div className="mb-12">
         <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
           Propriedades em{" "}
           <span className="bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">Destaque</span>
@@ -149,7 +149,7 @@ export function PropertyCards() {
           conforto e localização.
         </p>
       </div>
-      <div className="pl-6 lg:pl-36">
+      <div>
         <div
           ref={scrollContainerRef}
           className="flex flex-nowrap gap-6 overflow-x-auto pb-4 scrollbar-hide cursor-grab active:cursor-grabbing"
@@ -209,7 +209,7 @@ export function PropertyCards() {
         </div>
       </div>
       {/* Scroll Indicator and Button */}
-      <div className="px-6 lg:px-36 mt-2 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div className="mt-2 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
         <div className="flex items-center text-[#a0a0a0] text-sm">
           <span>Deslize para ver mais propriedades</span>
           <div className="ml-2 flex space-x-1">
@@ -241,14 +241,14 @@ export function PropertyCards() {
         </div>
       </div>
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+    `}</style>
     </section>
   )
 }

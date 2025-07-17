@@ -50,7 +50,7 @@ function CustomSelect({
   const displayLabel = selectedValue ? options.find((opt) => opt.value === selectedValue)?.label : placeholder
 
   return (
-    <div className="relative" ref={selectRef}>
+    <div className="relative hidden lg:block" ref={selectRef}>
       <button
         type="button"
         className={cn(
@@ -204,13 +204,14 @@ export function FloatingSearch() {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-4 right-4 lg:bottom-8 lg:left-1/2 lg:right-auto lg:transform lg:-translate-x-1/2 z-50 transition-all duration-300 scrollbar-hide",
+        "fixed bottom-4 hidden lg:block left-4 right-4 lg:bottom-8 lg:left-1/2 lg:right-auto lg:transform lg:-translate-x-1/2 z-50 transition-all duration-300 scrollbar-hide",
         isVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none",
       )}
     >
       <div className="bg-[#2a2a2a] rounded-2xl py-3 px-4 shadow-2xl w-full lg:w-auto mx-auto">
         <div className="flex flex-col gap-3 lg:flex-row lg:gap-4 lg:items-center">
-          <div className="flex gap-2 lg:gap-4">
+          {/* Group for selects, always full width on mobile */}
+          <div className="flex flex-col gap-3 lg:flex-row lg:gap-4 w-full">
             <CustomSelect
               placeholder="Comprar"
               icon={Home}
@@ -219,7 +220,7 @@ export function FloatingSearch() {
                 { value: "rent", label: "Alugar" },
                 { value: "sell", label: "Vender" },
               ]}
-              className="flex-1 lg:w-[150px] text-sm"
+              className="w-full lg:w-[150px] text-sm"
               onValueChange={setSelectedAction}
             />
             <CustomSelect
@@ -231,12 +232,13 @@ export function FloatingSearch() {
                 { value: "condo", label: "Condomínio" },
                 { value: "townhouse", label: "Sobrado" },
               ]}
-              className="flex-1 lg:w-[180px] text-sm"
+              className="w-full lg:w-[180px] text-sm"
               onValueChange={setSelectedPropertyType}
             />
           </div>
 
-          <div className="flex gap-2">
+          {/* Group for input and button */}
+          <div className="flex gap-2 w-full">
             <div className="relative flex-1" ref={inputContainerRef}>
               <Input
                 placeholder="Localização desejada"
