@@ -1,26 +1,19 @@
-"use client";
+"use client"
 
-import type { ReactElement } from "react";
+import type { ReactElement } from "react"
 
-import { useState, useEffect, useRef } from "react";
-import {
-  Search,
-  Home,
-  FileText,
-  Key,
-  Shield,
-  Headphones,
-  ChevronRight,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState, useEffect, useRef } from "react"
+import { useSwipeable } from "react-swipeable"
+import { Search, Home, FileText, Key, Shield, Headphones, ChevronRight } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface Service {
-  id: number;
-  icon: ReactElement;
-  title: string;
-  description: string;
-  details: string[];
-  step: string;
+  id: number
+  icon: ReactElement
+  title: string
+  description: string
+  details: string[]
+  step: string
 }
 
 const services: Service[] = [
@@ -28,8 +21,7 @@ const services: Service[] = [
     id: 1,
     icon: <Search />,
     title: "Busca Inteligente",
-    description:
-      "Encontramos propriedades que combinam perfeitamente com seu perfil e necessidades.",
+    description: "Encontramos propriedades que combinam perfeitamente com seu perfil e necessidades.",
     details: [
       "Algoritmo de matching personalizado",
       "Filtros avançados de busca",
@@ -42,8 +34,7 @@ const services: Service[] = [
     id: 2,
     icon: <Home />,
     title: "Visitas Guiadas",
-    description:
-      "Agendamento flexível com especialistas que conhecem cada detalhe da propriedade.",
+    description: "Agendamento flexível com especialistas que conhecem cada detalhe da propriedade.",
     details: [
       "Agendamento online 24/7",
       "Consultores especializados",
@@ -56,8 +47,7 @@ const services: Service[] = [
     id: 3,
     icon: <FileText />,
     title: "Documentação Completa",
-    description:
-      "Cuidamos de toda a burocracia para que você foque apenas na sua nova casa.",
+    description: "Cuidamos de toda a burocracia para que você foque apenas na sua nova casa.",
     details: [
       "Análise jurídica completa",
       "Preparação de contratos",
@@ -70,8 +60,7 @@ const services: Service[] = [
     id: 4,
     icon: <Shield />,
     title: "Segurança Garantida",
-    description:
-      "Transações 100% seguras com verificação completa de documentos e histórico.",
+    description: "Transações 100% seguras com verificação completa de documentos e histórico.",
     details: [
       "Verificação de documentos",
       "Análise de histórico da propriedade",
@@ -84,8 +73,7 @@ const services: Service[] = [
     id: 5,
     icon: <Key />,
     title: "Entrega das Chaves",
-    description:
-      "Momento especial com cerimônia personalizada e suporte completo na mudança.",
+    description: "Momento especial com cerimônia personalizada e suporte completo na mudança.",
     details: [
       "Cerimônia de entrega personalizada",
       "Checklist completo da propriedade",
@@ -98,8 +86,7 @@ const services: Service[] = [
     id: 6,
     icon: <Headphones />,
     title: "Suporte Contínuo",
-    description:
-      "Relacionamento que não termina na entrega. Estamos sempre aqui para você.",
+    description: "Relacionamento que não termina na entrega. Estamos sempre aqui para você.",
     details: [
       "Suporte 24/7 pós-venda",
       "Rede de parceiros para manutenção",
@@ -108,7 +95,7 @@ const services: Service[] = [
     ],
     step: "PARCERIA",
   },
-];
+]
 
 function ServiceCard({
   service,
@@ -116,60 +103,56 @@ function ServiceCard({
   isActive,
   onClick,
 }: {
-  service: Service;
-  index: number;
-  isActive: boolean;
-  onClick: () => void;
+  service: Service
+  index: number
+  isActive: boolean
+  onClick: () => void
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), index * 100);
+          setTimeout(() => setIsVisible(true), index * 100)
         }
       },
-      { threshold: 0.2 }
-    );
+      { threshold: 0.2 },
+    )
 
     if (cardRef.current) {
-      observer.observe(cardRef.current);
+      observer.observe(cardRef.current)
     }
 
-    return () => observer.disconnect();
-  }, [index]);
+    return () => observer.disconnect()
+  }, [index])
 
   return (
     <div
       ref={cardRef}
       className={cn(
         "transition-all duration-700 ease-out cursor-pointer",
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8",
       )}
       onClick={onClick}
     >
       <div
         className={cn(
           "relative border-l-2 pl-8 pb-12 transition-all duration-300",
-          isActive
-            ? "border-[#3655d4]"
-            : "border-white/20 hover:border-white/40"
+          isActive ? "border-[#3655d4]" : "border-white/20 hover:border-white/40",
         )}
       >
         <div
           className={cn(
             "absolute -left-3 top-0 w-6 h-6 rounded-full border-2 transition-all duration-300",
-            isActive
-              ? "bg-[#3655d4] border-[#3655d4]"
-              : "bg-[#181818] border-white/20"
+            isActive ? "bg-[#3655d4] border-[#3655d4]" : "bg-[#181818] border-white/20",
           )}
         >
           <div
             className={cn(
               "absolute inset-1 rounded-full transition-all duration-300",
-              isActive ? "bg-white" : "bg-transparent"
+              isActive ? "bg-white" : "bg-transparent",
             )}
           />
         </div>
@@ -178,7 +161,7 @@ function ServiceCard({
           <span
             className={cn(
               "text-xs font-bold tracking-wider transition-colors duration-300",
-              isActive ? "text-[#3655d4]" : "text-[#a0a0a0]"
+              isActive ? "text-[#3655d4]" : "text-[#a0a0a0]",
             )}
           >
             {service.step}
@@ -189,9 +172,7 @@ function ServiceCard({
           <div
             className={cn(
               "w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300",
-              isActive
-                ? "bg-[#3655d4]/20 border border-[#3655d4]/30"
-                : "bg-white/5 border border-white/10"
+              isActive ? "bg-[#3655d4]/20 border border-[#3655d4]/30" : "bg-white/5 border border-white/10",
             )}
           >
             {service.icon}
@@ -201,7 +182,7 @@ function ServiceCard({
             <h3
               className={cn(
                 "text-xl font-bold mb-2 transition-colors duration-300",
-                isActive ? "text-white" : "text-[#a0a0a0]"
+                isActive ? "text-white" : "text-[#a0a0a0]",
               )}
             >
               {service.title}
@@ -209,7 +190,7 @@ function ServiceCard({
             <p
               className={cn(
                 "text-sm leading-relaxed transition-colors duration-300",
-                isActive ? "text-[#a0a0a0]" : "text-[#666]"
+                isActive ? "text-[#a0a0a0]" : "text-[#666]",
               )}
             >
               {service.description}
@@ -219,9 +200,7 @@ function ServiceCard({
           <ChevronRight
             className={cn(
               "w-5 h-5 transition-all duration-300",
-              isActive
-                ? "text-[#3655d4] rotate-90"
-                : "text-[#666] group-hover:translate-x-1"
+              isActive ? "text-[#3655d4] rotate-90" : "text-[#666] group-hover:translate-x-1",
             )}
           />
         </div>
@@ -229,16 +208,13 @@ function ServiceCard({
         <div
           className={cn(
             "overflow-hidden transition-all duration-500 ease-out",
-            isActive ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            isActive ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
           )}
         >
           <div className="ml-16 pt-4">
             <ul className="space-y-2">
               {service.details.map((detail, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-start gap-3 text-sm text-[#a0a0a0]"
-                >
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#a0a0a0]">
                   <div className="w-1 h-1 rounded-full bg-[#3655d4] mt-2 flex-shrink-0" />
                   <span>{detail}</span>
                 </li>
@@ -248,30 +224,45 @@ function ServiceCard({
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export function ServicesSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeService, setActiveService] = useState<number>(1);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const [activeService, setActiveService] = useState<number>(1)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setIsVisible(true)
         }
       },
-      { threshold: 0.1 }
-    );
+      { threshold: 0.1 },
+    )
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [])
+
+  const nextService = () => {
+    setActiveService((prev) => (prev >= services.length ? 1 : prev + 1))
+  }
+
+  const prevService = () => {
+    setActiveService((prev) => (prev <= 1 ? services.length : prev - 1))
+  }
+
+  const handlers = useSwipeable({
+    onSwipedLeft: nextService,
+    onSwipedRight: prevService,
+    trackMouse: true,
+    trackTouch: true,
+  })
 
   return (
     <section ref={sectionRef} className="py-20 lg:py-32 bg-[#181818]">
@@ -279,24 +270,23 @@ export function ServicesSection() {
         <div
           className={cn(
             "mb-16 lg:mb-24 transition-all duration-1000 ease-out",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
           )}
         >
           <div className="max-w-4xl">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight text-nowrap">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Juntos fazemos o seu{" "}
               <span className="bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">
                 sonho acontecer
               </span>
             </h2>
-            <p className="text-[#a0a0a0] text-lg lg:text-xl font-light max-w-2xl">
-              Cada etapa do nosso processo foi pensada para oferecer a melhor
-              experiência na busca pela sua casa ideal
+            <p className="text-[#a0a0a0] text-base lg:text-xl font-light max-w-2xl">
+              Cada etapa do nosso processo foi pensada para oferecer a melhor experiência na busca pela sua casa ideal
             </p>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-24">
           <div className="relative">
             {services.map((service, index) => (
               <ServiceCard
@@ -312,39 +302,41 @@ export function ServicesSection() {
           <div
             className={cn(
               "lg:sticky lg:top-32 h-fit transition-all duration-1000 ease-out delay-500",
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-8"
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8",
             )}
           >
-            <div className="relative">
-              <div className="bg-gradient-to-br from-white/5 to-white/[0.02] rounded-3xl p-8 lg:p-12 border border-white/10">
+            <div className="relative" {...handlers}>
+              <div className="bg-gradient-to-br from-white/5 to-white/[0.02] rounded-3xl p-6 lg:p-12 border border-white/10">
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#3655d4]/20 border border-[#3655d4]/30 flex items-center justify-center">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-6 rounded-2xl bg-[#3655d4]/20 border border-[#3655d4]/30 flex items-center justify-center">
                     {services.find((s) => s.id === activeService)?.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
                     {services.find((s) => s.id === activeService)?.title}
                   </h3>
 
-                  <p className="text-[#a0a0a0] leading-relaxed mb-8">
+                  <p className="text-[#a0a0a0] leading-relaxed mb-8 text-sm lg:text-base">
                     {services.find((s) => s.id === activeService)?.description}
                   </p>
 
-                  <div className="flex items-center justify-center gap-2">
+                  {/* Bullets clicáveis */}
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     {services.map((_, index) => (
-                      <div
+                      <button
                         key={index}
+                        onClick={() => setActiveService(index + 1)}
                         className={cn(
-                          "h-1 rounded-full transition-all duration-300",
-                          index + 1 === activeService
-                            ? "w-8 bg-[#3655d4]"
-                            : "w-2 bg-white/20"
+                          "h-2 rounded-full transition-all duration-300 cursor-pointer hover:scale-110",
+                          index + 1 === activeService ? "w-8 bg-[#3655d4]" : "w-2 bg-white/20 hover:bg-white/40",
                         )}
+                        aria-label={`Ir para serviço ${index + 1}`}
                       />
                     ))}
                   </div>
+
+                  {/* Indicador de swipe para mobile */}
+                  <div className="lg:hidden text-xs text-[#666] mt-2">Deslize para navegar</div>
                 </div>
               </div>
 
@@ -357,7 +349,7 @@ export function ServicesSection() {
         <div
           className={cn(
             "mt-20 lg:mt-32 grid md:grid-cols-3 gap-8 text-center transition-all duration-1000 ease-out delay-1000",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
           )}
         >
           {[
@@ -366,15 +358,15 @@ export function ServicesSection() {
             { number: "100", label: "Processo Seguro", suffix: "%" },
           ].map((stat, index) => (
             <div key={index} className="group">
-              <div className="text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:scale-105 transition-transform duration-300">
+              <div className="text-2xl lg:text-4xl font-bold text-white mb-2 group-hover:scale-105 transition-transform duration-300">
                 {stat.number}
                 <span className="text-[#3655d4]">{stat.suffix}</span>
               </div>
-              <p className="text-[#a0a0a0] font-light">{stat.label}</p>
+              <p className="text-[#a0a0a0] font-light text-sm lg:text-base">{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

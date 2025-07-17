@@ -1,17 +1,17 @@
-"use client";
-import Image from "next/image";
-import { MapPin, Ruler, Bed, Bath } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useRef, useState, useEffect } from "react";
+"use client"
+import Image from "next/image"
+import { MapPin, Ruler, Bed, Bath } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useRef, useState, useEffect } from "react"
 
 interface Property {
-  id: number;
-  title: string;
-  location: string;
-  area: string;
-  bedrooms: number;
-  bathrooms: number;
-  image: string;
+  id: number
+  title: string
+  location: string
+  area: string
+  bedrooms: number
+  bathrooms: number
+  image: string
 }
 
 const properties: Property[] = [
@@ -87,69 +87,66 @@ const properties: Property[] = [
     bathrooms: 1,
     image: "/images/hero.png",
   },
-];
+]
 
 export function PropertyCards() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
 
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer) return
 
     const handleMouseDown = (e: MouseEvent) => {
-      setIsDragging(true);
-      setStartX(e.pageX - scrollContainer.offsetLeft);
-      setScrollLeft(scrollContainer.scrollLeft);
-      scrollContainer.style.cursor = "grabbing";
-    };
+      setIsDragging(true)
+      setStartX(e.pageX - scrollContainer.offsetLeft)
+      setScrollLeft(scrollContainer.scrollLeft)
+      scrollContainer.style.cursor = "grabbing"
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - scrollContainer.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      scrollContainer.scrollLeft = scrollLeft - walk;
-    };
+      if (!isDragging) return
+      e.preventDefault()
+      const x = e.pageX - scrollContainer.offsetLeft
+      const walk = (x - startX) * 1.5
+      scrollContainer.scrollLeft = scrollLeft - walk
+    }
 
     const handleMouseUp = () => {
-      setIsDragging(false);
-      scrollContainer.style.cursor = "grab";
-    };
+      setIsDragging(false)
+      scrollContainer.style.cursor = "grab"
+    }
 
     const handleMouseLeave = () => {
-      setIsDragging(false);
-      scrollContainer.style.cursor = "grab";
-    };
+      setIsDragging(false)
+      scrollContainer.style.cursor = "grab"
+    }
 
-    scrollContainer.addEventListener("mousedown", handleMouseDown);
-    scrollContainer.addEventListener("mousemove", handleMouseMove);
-    scrollContainer.addEventListener("mouseup", handleMouseUp);
-    scrollContainer.addEventListener("mouseleave", handleMouseLeave);
+    scrollContainer.addEventListener("mousedown", handleMouseDown)
+    scrollContainer.addEventListener("mousemove", handleMouseMove)
+    scrollContainer.addEventListener("mouseup", handleMouseUp)
+    scrollContainer.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
-      scrollContainer.removeEventListener("mousedown", handleMouseDown);
-      scrollContainer.removeEventListener("mousemove", handleMouseMove);
-      scrollContainer.removeEventListener("mouseup", handleMouseUp);
-      scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [isDragging, startX, scrollLeft]);
+      scrollContainer.removeEventListener("mousedown", handleMouseDown)
+      scrollContainer.removeEventListener("mousemove", handleMouseMove)
+      scrollContainer.removeEventListener("mouseup", handleMouseUp)
+      scrollContainer.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [isDragging, startX, scrollLeft])
 
   return (
     <section className="py-20 bg-[#181818]">
       <div className="pl-6 lg:pl-36 mb-12">
         <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
           Propriedades em{" "}
-          <span className="bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">
-            Destaque
-          </span>
+          <span className="bg-gradient-to-r from-[#3655d4] to-blue-400 bg-clip-text text-transparent">Destaque</span>
         </h2>
         <p className="text-[#a0a0a0] text-lg max-w-2xl">
-          Descubra nossa seleção exclusiva de propriedades premium,
-          cuidadosamente escolhidas para oferecer o melhor em conforto e
-          localização.
+          Descubra nossa seleção exclusiva de propriedades premium, cuidadosamente escolhidas para oferecer o melhor em
+          conforto e localização.
         </p>
       </div>
       <div className="pl-6 lg:pl-36">
@@ -177,8 +174,7 @@ export function PropertyCards() {
                     <Button
                       className="bg-[#3655d4] hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold"
                       style={{
-                        textShadow:
-                          "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
+                        textShadow: "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
                       }}
                     >
                       Ver Mais
@@ -187,9 +183,7 @@ export function PropertyCards() {
                 </div>
               </div>
               <div className="p-4 pt-2">
-                <h3 className="text-lg font-bold text-white mb-1 min-h-[3rem]">
-                  {property.title}
-                </h3>
+                <h3 className="text-lg font-bold text-white mb-1 min-h-[3rem]">{property.title}</h3>
                 <div className="flex items-center text-[#a0a0a0] mb-4">
                   <MapPin className="w-4 h-4 mr-2 text-[#3655d4]" />
                   <span className="text-sm">{property.location}</span>
@@ -206,9 +200,7 @@ export function PropertyCards() {
                   </div>
                   <div className="flex items-center text-[#a0a0a0]">
                     <Bath className="w-4 h-4 mr-1 text-[#3655d4]" />
-                    <span className="text-sm">
-                      {property.bathrooms} Banheiro
-                    </span>
+                    <span className="text-sm">{property.bathrooms} Banheiro</span>
                   </div>
                 </div>
               </div>
@@ -217,7 +209,7 @@ export function PropertyCards() {
         </div>
       </div>
       {/* Scroll Indicator and Button */}
-      <div className="pl-6 lg:pl-36 mt-2 flex justify-between items-center">
+      <div className="px-6 lg:px-36 mt-2 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
         <div className="flex items-center text-[#a0a0a0] text-sm">
           <span>Deslize para ver mais propriedades</span>
           <div className="ml-2 flex space-x-1">
@@ -227,22 +219,22 @@ export function PropertyCards() {
           </div>
         </div>
 
-        <div className="mr-6 lg:mr-36 flex gap-2">
+        <div className="flex flex-wrap gap-2 w-full lg:w-auto justify-center lg:justify-end">
           <Button
             variant="outline"
-            className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-8 py-2 rounded-full font-normal "
+            className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-4 lg:px-8 py-2 rounded-full font-normal text-sm bg-transparent"
           >
             Ver casas
           </Button>
           <Button
             variant="outline"
-            className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-8 py-2 rounded-full font-normal "
+            className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-4 lg:px-8 py-2 rounded-full font-normal text-sm bg-transparent"
           >
             Ver apartamentos
           </Button>
           <Button
             variant="outline"
-            className="border-[#3665d4] bg-[#3665d4] hover:bg-[#c1d3ff] text-white px-8 py-2 rounded-full font-normal transition-all duration-300 "
+            className="border-[#3665d4] bg-[#3665d4] hover:bg-[#c1d3ff] text-white px-4 lg:px-8 py-2 rounded-full font-normal transition-all duration-300 text-sm"
           >
             Ver todos
           </Button>
@@ -258,5 +250,5 @@ export function PropertyCards() {
         }
       `}</style>
     </section>
-  );
+  )
 }
