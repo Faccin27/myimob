@@ -123,6 +123,11 @@ export function Header({ activeSection = "home" }: HeaderProps) {
 
       {/* Desktop Button */}
       <Button
+        onClick={() => {
+          window.alert(
+            "Olá, esté não é um site atualmente utilizado com fim de imobiliaria, se clicou aqui, pode ter um interesse em comprá-lo para seu negocio. Me contate em 49 9 9921-5720. Atenciosamente: Guilherme Faccin, seu desenvolvedor web."
+          );
+        }}
         style={{
           textShadow:
             "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
@@ -188,7 +193,11 @@ export function Header({ activeSection = "home" }: HeaderProps) {
                     "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
                 }}
                 className="mt-6 bg-[#3655d4] hover:bg-blue-600 font-semibold text-white px-6 py-3 rounded-full text-[16px] w-full"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  window.alert(
+                    "Olá, esté não é um site atualmente utilizado com fim de imobiliaria, se clicou aqui, pode ter um interesse em comprá-lo para seu negocio. Me contate em 49 9 9921-5720. Atenciosamente: Guilherme Faccin, seu desenvolvedor web."
+                  );
+                }}
               >
                 Orçamento
               </Button>

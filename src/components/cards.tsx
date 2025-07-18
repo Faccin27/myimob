@@ -229,18 +229,27 @@ export function PropertyCards() {
 
         <div className="flex flex-wrap gap-2 w-full lg:w-auto justify-center lg:justify-end">
           <Button
+            onClick={() => {
+              window.location.href = "/propriedades";
+            }}
             variant="outline"
             className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-4 lg:px-8 py-2 rounded-full font-normal text-sm bg-transparent"
           >
             Ver casas
           </Button>
           <Button
+            onClick={() => {
+              window.location.href = "/propriedades";
+            }}
             variant="outline"
             className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-4 lg:px-8 py-2 rounded-full font-normal text-sm bg-transparent"
           >
             Ver apartamentos
           </Button>
           <Button
+            onClick={() => {
+              window.location.href = "/propriedades";
+            }}
             variant="outline"
             className="border-[#3665d4] bg-[#3665d4] hover:bg-[#c1d3ff] text-white px-4 lg:px-8 py-2 rounded-full font-normal transition-all duration-300 text-sm"
           >

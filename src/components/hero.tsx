@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
@@ -26,10 +27,20 @@ export default function HeroSection() {
           </p>
 
           <div className="flex gap-4">
-            <Button className="bg-[#3665d4] hover:bg-blue-600 text-white px-8 py-4 rounded-full font-normal">
+            <Button
+              onClick={() => {
+                window.location.href = "/propriedades";
+              }}
+              className="bg-[#3665d4] hover:bg-blue-600 text-white px-8 py-4 rounded-full font-normal"
+            >
               Explorar mais
             </Button>
             <Button
+              onClick={() => {
+                window.alert(
+                  "Ops, parece que não temos nenhuma demo pronta ainda."
+                );
+              }}
               variant="outline"
               className="border-[#3665d4] hover:bg-[#c1d3ff] text-[#3665d4] px-8 py-4 rounded-full font-normal"
             >
