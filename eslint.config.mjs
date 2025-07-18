@@ -21,6 +21,15 @@ const eslintConfig = [
       "prefer-const": "off",
       "react-hooks/rules-of-hooks": "off",
       "import/no-anonymous-default-export": "off",
+      '@typescript-eslint/ban-ts-comment': [
+        'error',
+        {
+          'ts-ignore': false, 
+          'ts-expect-error': true,
+          'ts-nocheck': true,
+          'ts-check': false,
+        },
+      ],
     },
   },
 ];
