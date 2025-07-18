@@ -10,7 +10,7 @@ interface PropertyDetailPageProps {
   };
 }
 
-// @ts-ignore
+// @ts-expect-error: Ignorando erro de tipagem em params
 export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {
   const propertyId = Number(params.id); // conversão aqui é o correto
   const property = mockProperties.find((p) => p.id === propertyId);
