@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer";
 import { PropertyDetail } from "@/components/property-detail";
 import { mockProperties } from "@/lib/mock-data";
 
-export default function PropertyDetailPage({ params }: { params: { id: number } }) {
+export default function PropertyDetailPage({ params }: { params: { id: any } }) {
   const propertyId = Number(params.id);
   const property = mockProperties.find((p) => p.id === propertyId);
 
