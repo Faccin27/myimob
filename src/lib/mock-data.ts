@@ -1,13 +1,19 @@
 export interface Property {
   id: number
   title: string
-  location: string
-  area: string
+  location: string // e.g., "Copacabana, Rio de Janeiro"
+  address: string // e.g., "Rua Atlântica, 1234, Apto 501"
+  area: string // e.g., "1.800 m²"
   bedrooms: number
   bathrooms: number
   garage: number // Added garage
   price: number // Added price
-  image: string
+  description: string // Detailed description
+  gallery: string[] // Array of image URLs
+  features: string[] // List of amenities/features
+  mapLink?: string // Optional link to Google Maps or similar
+  contactEmail: string
+  contactPhone: string
 }
 
 export const mockProperties: Property[] = [
@@ -15,111 +21,247 @@ export const mockProperties: Property[] = [
     id: 1,
     title: "Apartamento de Luxo com Vista Panorâmica",
     location: "Copacabana, Rio de Janeiro",
+    address: "Av. Atlântica, 1702, Apto 1201",
     area: "1.800 m²",
     bedrooms: 3,
     bathrooms: 4,
     garage: 2,
     price: 1200000,
-    image: "/images/hero.png",
+    description:
+      "Deslumbrante apartamento de luxo localizado na orla de Copacabana, oferecendo vistas panorâmicas ininterruptas do oceano. Este imóvel espaçoso possui acabamentos de alta qualidade, suítes elegantes, uma cozinha gourmet e uma varanda privativa perfeita para apreciar o pôr do sol. Ideal para quem busca sofisticação e conforto em um dos endereços mais cobiçados do Rio de Janeiro.",
+    gallery: [
+      "/images/ap1.jpg",
+      "/images/ap2.webp",
+      "/images/ap3.webp",
+      "/images/ap4.png",
+      "/images/ap5.jpg",
+      "/images/ap6.jpg",
+
+    ],
+    features: [
+      "Piscina privativa",
+      "Academia no condomínio",
+      "Segurança 24h",
+      "Varanda gourmet",
+      "Ar condicionado central",
+      "Vista para o mar",
+      "Perto da praia",
+      "Portaria 24h",
+    ],
+    mapLink: "https://maps.app.goo.gl/example1",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 2,
     title: "Estúdio Moderno no Coração da Cidade",
     location: "Pinheiros, São Paulo",
+    address: "Rua dos Pinheiros, 100, Studio 5",
     area: "600 m²",
     bedrooms: 2,
     bathrooms: 3,
     garage: 1,
     price: 750000,
-    image: "/images/hero.png",
+    description:
+      "Estúdio moderno e compacto, ideal para jovens profissionais ou casais. Localizado no vibrante bairro de Pinheiros, com fácil acesso a restaurantes, bares e transporte público. O imóvel conta com design contemporâneo, cozinha integrada e uma sacada charmosa. Perfeito para quem busca praticidade e vida urbana.",
+    gallery: ["/images/property-2-1.jpg", "/images/property-2-2.jpg", "/images/property-2-3.jpg"],
+    features: ["Mobiliado", "Academia no prédio", "Lavanderia coletiva", "Portaria 24h", "Perto do metrô", "Varanda"],
+    mapLink: "https://maps.app.goo.gl/example2",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 3,
     title: "Casa Espaçosa com Jardim Privativo",
     location: "Jurerê Internacional, Florianópolis",
+    address: "Alameda dos Sonhos, 456, Jurerê",
     area: "2.500 m²",
     bedrooms: 4,
     bathrooms: 5,
     garage: 3,
     price: 2500000,
-    image: "/images/hero.png",
+    description:
+      "Magnífica casa em Jurerê Internacional, com amplo jardim privativo e área de lazer completa. Perfeita para famílias grandes ou para quem ama receber amigos. A propriedade oferece suítes confortáveis, piscina, churrasqueira e um paisagismo exuberante. Um verdadeiro refúgio de luxo perto da praia.",
+    gallery: [
+      "/images/property-3-1.jpg",
+      "/images/property-3-2.jpg",
+      "/images/property-3-3.jpg",
+      "/images/property-3-4.jpg",
+    ],
+    features: ["Piscina", "Churrasqueira", "Jardim", "Lareira", "Suítes", "Perto da praia", "Condomínio fechado"],
+    mapLink: "https://maps.app.goo.gl/example3",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 4,
     title: "Loft Urbano com Design Contemporâneo",
     location: "Centro, Salvador",
+    address: "Rua da Bahia, 789, Loft 202",
     area: "950 m²",
     bedrooms: 2,
     bathrooms: 2,
     garage: 1,
     price: 600000,
-    image: "/images/hero.png",
+    description:
+      "Loft com design arrojado no coração histórico de Salvador. Combina o charme da arquitetura local com o conforto moderno. Ideal para quem busca um estilo de vida dinâmico e cultural. Próximo a pontos turísticos, restaurantes e vida noturna.",
+    gallery: ["/images/property-4-1.jpg", "/images/property-4-2.jpg", "/images/property-4-3.jpg"],
+    features: ["Design moderno", "Cozinha americana", "Perto de pontos turísticos", "Varanda", "Portaria 24h"],
+    mapLink: "https://maps.app.goo.gl/example4",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 5,
     title: "Residência Exclusiva em Condomínio Fechado",
     location: "Alphaville, São Paulo",
+    address: "Av. Alphaville, 3000, Casa 15",
     area: "1.600 m²",
     bedrooms: 3,
     bathrooms: 3,
     garage: 2,
     price: 1800000,
-    image: "/images/hero.png",
+    description:
+      "Residência de alto padrão em condomínio fechado com segurança 24h. Oferece privacidade, conforto e uma infraestrutura completa de lazer. Ambientes amplos e iluminados, com acabamentos de primeira linha. Perfeito para famílias que buscam qualidade de vida e exclusividade.",
+    gallery: [
+      "/images/property-5-1.jpg",
+      "/images/property-5-2.jpg",
+      "/images/property-5-3.jpg",
+      "/images/property-5-4.jpg",
+    ],
+    features: [
+      "Condomínio fechado",
+      "Segurança 24h",
+      "Área de lazer completa",
+      "Piscina",
+      "Churrasqueira",
+      "Jardim",
+      "Lareira",
+    ],
+    mapLink: "https://maps.app.goo.gl/example5",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 6,
     title: "Apartamento Clássico com Charme Histórico",
     location: "Santa Teresa, Rio de Janeiro",
+    address: "Rua Aprazível, 50, Apto 301",
     area: "1.200 m²",
     bedrooms: 3,
     bathrooms: 2,
     garage: 1,
     price: 900000,
-    image: "/images/hero.png",
+    description:
+      "Apartamento charmoso em Santa Teresa, com arquitetura clássica e vista para a cidade. Um imóvel que respira história e cultura, com ambientes aconchegantes e bem iluminados. Ideal para quem busca um estilo de vida boêmio e tranquilo, perto do centro do Rio.",
+    gallery: ["/images/property-6-1.jpg", "/images/property-6-2.jpg", "/images/property-6-3.jpg"],
+    features: ["Vista para a cidade", "Perto de pontos turísticos", "Ambientes amplos", "Varanda", "Portaria"],
+    mapLink: "https://maps.app.goo.gl/example6",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 7,
     title: "Cobertura Duplex com Vista Deslumbrante",
     location: "Leblon, Rio de Janeiro",
+    address: "Av. Delfim Moreira, 1500, Cobertura",
     area: "3.000 m²",
     bedrooms: 5,
     bathrooms: 6,
     garage: 3,
     price: 3500000,
-    image: "/images/hero.png",
+    description:
+      "Espetacular cobertura duplex no Leblon, com vista deslumbrante para o mar e a Lagoa. Luxo e exclusividade em cada detalhe, com piscina privativa, área gourmet e amplos espaços para lazer e convívio. Oportunidade única de viver em um dos bairros mais nobres do Rio.",
+    gallery: [
+      "/images/property-7-1.jpg",
+      "/images/property-7-2.jpg",
+      "/images/property-7-3.jpg",
+      "/images/property-7-4.jpg",
+    ],
+    features: [
+      "Piscina privativa",
+      "Vista para o mar e lagoa",
+      "Área gourmet",
+      "Academia no condomínio",
+      "Segurança 24h",
+      "Perto da praia",
+    ],
+    mapLink: "https://maps.app.goo.gl/example7",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 8,
     title: "Studio Compacto e Funcional",
     location: "Moema, São Paulo",
+    address: "Rua Gaivota, 800, Studio 10",
     area: "550 m²",
     bedrooms: 1,
     bathrooms: 1,
     garage: 0,
     price: 400000,
-    image: "/images/hero.png",
+    description:
+      "Studio moderno e funcional em Moema, ideal para solteiros ou estudantes. Localização privilegiada, com fácil acesso a parques, shoppings e transporte público. O imóvel oferece praticidade e conforto em um espaço bem planejado.",
+    gallery: ["/images/property-8-1.jpg", "/images/property-8-2.jpg"],
+    features: ["Mobiliado", "Perto de parques", "Lavanderia coletiva", "Portaria 24h", "Perto do metrô"],
+    mapLink: "https://maps.app.goo.gl/example8",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 9,
     title: "Casa de Campo com Piscina",
     location: "Gramado, Rio Grande do Sul",
+    address: "Estrada do Caracol, 123, Gramado",
     area: "3.500 m²",
     bedrooms: 4,
     bathrooms: 4,
     garage: 2,
     price: 1500000,
-    image: "/images/hero.png",
+    description:
+      "Encantadora casa de campo em Gramado, perfeita para desfrutar da tranquilidade da serra. Com ampla área verde, piscina aquecida e lareira, é ideal para momentos em família ou com amigos. Ambientes rústicos e aconchegantes, com todo o conforto necessário.",
+    gallery: [
+      "/images/property-9-1.jpg",
+      "/images/property-9-2.jpg",
+      "/images/property-9-3.jpg",
+      "/images/property-9-4.jpg",
+    ],
+    features: [
+      "Piscina aquecida",
+      "Lareira",
+      "Jardim amplo",
+      "Área gourmet",
+      "Vista para a natureza",
+      "Perto de trilhas",
+    ],
+    mapLink: "https://maps.app.goo.gl/example9",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
   {
     id: 10,
     title: "Apartamento com Varanda Gourmet",
     location: "Barra da Tijuca, Rio de Janeiro",
+    address: "Av. das Américas, 5000, Bloco 2, Apto 801",
     area: "1.000 m²",
     bedrooms: 2,
     bathrooms: 2,
     garage: 1,
     price: 850000,
-    image: "/images/hero.png",
+    description:
+      "Apartamento moderno na Barra da Tijuca, com uma espaçosa varanda gourmet perfeita para entretenimento. Condomínio com infraestrutura completa de lazer, incluindo piscinas, quadras e academia. Ideal para quem busca conforto, segurança e qualidade de vida na Zona Oeste do Rio.",
+    gallery: ["/images/property-10-1.jpg", "/images/property-10-2.jpg", "/images/property-10-3.jpg"],
+    features: [
+      "Varanda gourmet",
+      "Piscina no condomínio",
+      "Academia no condomínio",
+      "Segurança 24h",
+      "Perto de shoppings",
+      "Transporte público próximo",
+    ],
+    mapLink: "https://maps.app.goo.gl/example10",
+    contactEmail: "contato@myimob.com.br",
+    contactPhone: "(49) 99921-5720",
   },
 ]
 

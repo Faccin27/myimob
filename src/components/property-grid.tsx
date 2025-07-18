@@ -1,15 +1,25 @@
 import Image from "next/image"
 import { MapPin, Ruler, Bed, Bath, Car } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import type { Property } from "@/lib/mock-data" 
+import type { Property } from "@/lib/mock-data" // Import Property type
+import Link from "next/link" // Import Link
 
 interface PropertyGridProps {
   properties: Property[]
 }
 
 export function PropertyGrid({ properties }: PropertyGridProps) {
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price)
+  }
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {properties.map((property) => (
         <div
           key={property.id}
@@ -19,21 +29,25 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
           <div className="p-3">
             <div className="relative h-48 overflow-hidden rounded-xl">
               <Image
-                src={property.image || "/placeholder.svg"}
+                src={'/images/hero.png'} 
                 alt={property.title}
                 width={400}
                 height={300}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-                <Button
-                  className="bg-[#3655d4] hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold"
-                  style={{
-                    textShadow: "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
-                  }}
-                >
-                  Ver Mais
-                </Button>
+                <Link href={`/propriedades/${property.id}`}>
+                  {" "}
+                  {/* Link to detail page */}
+                  <Button
+                    className="bg-[#3655d4] hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold"
+                    style={{
+                      textShadow: "0 0 10px rgba(54, 85, 212, 0.8), 0 0 20px rgba(54, 85, 212, 0.6)",
+                    }}
+                  >
+                    Ver Mais
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -43,7 +57,7 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
               <MapPin className="w-4 h-4 mr-2 text-[#3655d4]" />
               <span className="text-sm">{property.location}</span>
             </div>
-            <div className="text-white text-xl font-bold mb-4">R$ {property.price.toLocaleString("pt-BR")}</div>
+            <div className="text-white text-xl font-bold mb-4">{formatPrice(property.price)}</div>
             {/* Features */}
             <div className="flex items-center justify-around border-t border-[#333] pt-4">
               <div className="flex items-center text-[#a0a0a0]">
