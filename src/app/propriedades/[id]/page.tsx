@@ -6,15 +6,14 @@ import { mockProperties } from "@/lib/mock-data";
 
 interface PropertyDetailPageProps {
   params: {
-    id: any; 
+    id: string; 
   };
 }
 
 // @ts-ignore
-export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {
-  const propertyId = Number(params.id); // conversão aqui é o correto
+export default function PropertyDetailPage({ params }: PageProps) {
+  const propertyId = Number(params.id);
   const property = mockProperties.find((p) => p.id === propertyId);
-
 
   
   if (!property) {
