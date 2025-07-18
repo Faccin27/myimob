@@ -3,8 +3,15 @@ import { Footer } from "@/components/footer";
 import { PropertyDetail } from "@/components/property-detail";
 import { mockProperties } from "@/lib/mock-data";
 
-export default function PropertyDetailPage({ params }: { params: { id: any } }) {
-  const propertyId = Number(params.id);
+
+interface PropertyDetailPageProps {
+  params: {
+    id: any; 
+  };
+}
+
+export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {
+  const propertyId = Number(params.id); // conversão aqui é o correto
   const property = mockProperties.find((p) => p.id === propertyId);
 
 
