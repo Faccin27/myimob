@@ -14,6 +14,7 @@ export interface Property {
   mapLink?: string // Optional link to Google Maps or similar
   contactEmail: string
   contactPhone: string
+  panoramaUrl?: string
 }
 
 export const mockProperties: Property[] = [
@@ -51,6 +52,7 @@ export const mockProperties: Property[] = [
     mapLink: "https://maps.app.goo.gl/example1",
     contactEmail: "contato@myimob.com.br",
     contactPhone: "(49) 99921-5720",
+    panoramaUrl: "/images/panorama.jpg",
   },
   {
     id: 2,
